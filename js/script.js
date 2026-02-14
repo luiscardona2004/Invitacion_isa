@@ -1,9 +1,30 @@
+AOS.init({
+    duration:1200,
+    once:true
+});
+
+const btn = document.getElementById("enterBtn");
+const contenido = document.getElementById("contenido");
+const intro = document.getElementById("intro");
+const music = document.getElementById("music");
+
+contenido.style.display = "none";
+
+btn.addEventListener("click", () => {
+    intro.style.opacity = "0";
+    setTimeout(() => {
+        intro.style.display = "none";
+        contenido.style.display = "block";
+        music.play();
+    }, 1200);
+});
+
+/* CONTADOR */
+
 const countdown = document.getElementById("countdown");
+const fechaEvento = new Date("March 28, 2026 17:00:00").getTime();
 
-const fechaEvento = new Date("June 20, 2026 19:00:00").getTime();
-
-const intervalo = setInterval(() => {
-
+setInterval(() => {
     const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
 
@@ -12,13 +33,5 @@ const intervalo = setInterval(() => {
     const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    countdown.innerHTML = `
-        ${dias} días ${horas}h ${minutos}m ${segundos}s
-    `;
-
-    if (diferencia < 0) {
-        clearInterval(intervalo);
-        countdown.innerHTML = "¡Llegó el gran día!";
-    }
-
+    countdown.innerHTML = `${dias} días ${horas}h ${minutos}m ${segundos}s`;
 }, 1000);

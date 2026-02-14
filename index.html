@@ -3,50 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mis 15 Años</title>
+<title>ISA | 15 Años</title>
+
 <link rel="stylesheet" href="css/style.css">
 
-<!-- Fuente elegante -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- INTRO PREMIUM -->
+<div id="intro">
+    <div class="intro-content">
+        <h2>Estás invitado</h2>
+        <p>
+            Hoy quiero invitarte a compartir conmigo un momento muy especial,
+            una celebración llena de alegría, amor y nuevos comienzos.
+            Tu presencia hará este día aún más inolvidable.
+        </p>
+        <button id="enterBtn">Entrar</button>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="musica/Carlos Rivera - Te Esperaba.flac" type="audio/mpeg">
+</audio>
+
+<div id="contenido">
+
 <section class="hero">
-    <h1>Mis 15 Años</h1>
-    <h2>Isabella</h2>
-    <p class="fecha">20 • Junio • 2026</p>
+    <img src="images/portada.jpeg" class="portada">
+    <h1 class="shine">ISA</h1>
+    <p class="fecha">28 de Marzo</p>
 </section>
 
-<section class="mensaje">
+<section class="frase" data-aos="fade-up">
     <p>
-        Hay momentos inolvidables que se atesoran en el corazón para siempre.
-        Por eso quiero que compartas conmigo este día tan especial.
+        “Que cada paso que des esté lleno de luz,
+        y que cada sueño que nazca en tu corazón
+        encuentre siempre el camino para hacerse realidad.”
     </p>
 </section>
 
-<section class="evento">
-    <h3>Detalles del Evento</h3>
-    <p><strong>Fecha:</strong> 20 de Junio 2026</p>
-    <p><strong>Hora:</strong> 7:00 PM</p>
-    <p><strong>Lugar:</strong> Salón Real Eventos</p>
-    
-    <a href="https://maps.google.com" target="_blank" class="boton">
-        Ver ubicación 📍
-    </a>
-</section>
-
-<section class="contador">
-    <h3>Faltan</h3>
+<section class="contador" data-aos="fade-up">
+    <h2>Faltan</h2>
     <div id="countdown"></div>
 </section>
 
-<section class="confirmacion">
-    <a href="https://wa.me/573145391013" target="_blank" class="boton">
-        Confirmar asistencia 💬
+<section class="evento" data-aos="fade-right">
+    <h3>Misa</h3>
+    <p>5:00 PM</p>
+    <p>Parroquia del Divino Niño</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Cl.+98+%2335-36,+Manizales" target="_blank" class="btn">
+        Ver ubicación
     </a>
 </section>
 
+<section class="evento comida" data-aos="fade-left">
+    <h3>Comida</h3>
+    <p>7:30 PM</p>
+    <p>Restaurante Casa Grande</p>
+    <p>Calle 65A No 23B 40</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Casa+Grande+Manizales" target="_blank" class="btn">
+        Ver ubicación
+    </a>
+</section>
+
+<section class="galeria" data-aos="fade-up">
+    <h2>Momentos</h2>
+    <div class="slider">
+        <div class="slides">
+            <img src="images/galeria1.jpeg">
+            <img src="images/galeria2.jpeg">
+            <img src="images/galeria3.jpeg">
+            <img src="images/galeria4.jpeg">
+        </div>
+    </div>
+</section>
+
+<section class="confirmacion" data-aos="fade-up">
+    <p>Confirmar antes del 18 de Marzo</p>
+    <a href="https://wa.me/573134746793?text=Hola,%20confirmo%20mi%20asistencia%20a%20tus%2015%20años" target="_blank" class="btn">
+        Confirmar asistencia
+    </a>
+</section>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="js/script.js"></script>
 
 </body>
