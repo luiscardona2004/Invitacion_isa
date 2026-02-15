@@ -3,96 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ISA | 15 Años</title>
+<title>Isa | 15 Años</title>
 
 <link rel="stylesheet" href="css/style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-</head>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</head>
 <body>
 
-<!-- INTRO PREMIUM -->
+<div class="cursor-light"></div>
+<div class="petalos"></div>
+<div class="gold-particles"></div>
+
+<!-- INTRO -->
 <div id="intro">
-    <div class="intro-content">
-        <h2>Estás invitado</h2>
-        <p>
-            Hoy quiero invitarte a compartir conmigo un momento muy especial,
-            una celebración llena de alegría, amor y nuevos comienzos.
-            Tu presencia hará este día aún más inolvidable.
-        </p>
-        <button id="enterBtn">Entrar</button>
-    </div>
+  <div class="intro-box">
+    <h2 class="gold-text">Estás Invitado</h2>
+    <p>
+      Hoy quiero invitarte a vivir conmigo uno de los momentos más importantes de mi vida.
+      Una celebración llena de amor, sueños y elegancia.
+    </p>
+    <button id="enterBtn" class="btn-gold">Comenzar Experiencia</button>
+  </div>
 </div>
 
 <audio id="music" loop>
-    <source src="musica/Carlos Rivera - Te Esperaba.flac" type="audio/mpeg">
+  <source src="musica/musica.mp3" type="audio/mpeg">
 </audio>
 
 <div id="contenido">
 
-<section class="hero">
+<!-- 1 FOTO PRINCIPAL -->
+<section class="section hero">
+  <div class="hero-3d">
     <img src="images/portada.jpeg" class="portada">
-    <h1 class="shine">ISA</h1>
-    <p class="fecha">28 de Marzo</p>
+    <h1 class="gold-text shine">ISA</h1>
+  </div>
 </section>
 
-<section class="frase" data-aos="fade-up">
-    <p>
-        “Que cada paso que des esté lleno de luz,
-        y que cada sueño que nazca en tu corazón
-        encuentre siempre el camino para hacerse realidad.”
-    </p>
+<!-- 2 BIENVENIDA -->
+<section class="section revista">
+  <h2 class="gold-text">Bienvenido</h2>
+  <p>
+    Hemos preparado cada detalle de esta invitación
+    para que descubras la magia de este día tan especial.
+  </p>
 </section>
 
-<section class="contador" data-aos="fade-up">
-    <h2>Faltan</h2>
-    <div id="countdown"></div>
+<!-- 3 MENSAJE MAMÁ -->
+<section class="section revista">
+  <p>
+    Hoy celebramos la llegada de sus 15 años,
+    una etapa llena de luz y nuevas ilusiones.
+    Con amor eterno,
+  </p>
+  <h3 class="gold-text">Lina Verónica Aristizaval</h3>
+  <img src="images/mama_hija.jpg" class="foto-doble">
 </section>
 
-<section class="evento" data-aos="fade-right">
-    <h3>Misa</h3>
-    <p>5:00 PM</p>
-    <p>Parroquia del Divino Niño</p>
-    <a href="https://www.google.com/maps/search/?api=1&query=Cl.+98+%2335-36,+Manizales" target="_blank" class="btn">
-        Ver ubicación
-    </a>
-</section>
-
-<section class="evento comida" data-aos="fade-left">
-    <h3>Comida</h3>
-    <p>7:30 PM</p>
-    <p>Restaurante Casa Grande</p>
-    <p>Calle 65A No 23B 40</p>
-    <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Casa+Grande+Manizales" target="_blank" class="btn">
-        Ver ubicación
-    </a>
-</section>
-
-<section class="galeria" data-aos="fade-up">
-    <h2>Momentos</h2>
-    <div class="slider">
-        <div class="slides">
-            <img src="images/galeria1.jpeg">
-            <img src="images/galeria2.jpeg">
-            <img src="images/galeria3.jpeg">
-            <img src="images/galeria4.jpeg">
-        </div>
+<!-- 4 CARRUSEL 9 IMAGENES -->
+<section class="section revista">
+  <h2 class="gold-text">Recuerdos eternos</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/galeria1.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria2.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria3.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria4.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria5.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria6.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria7.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria8.jpg"></div>
+      <div class="swiper-slide"><img src="images/galeria9.jpg"></div>
     </div>
+  </div>
 </section>
 
-<section class="confirmacion" data-aos="fade-up">
-    <p>Confirmar antes del 18 de Marzo</p>
-    <a href="https://wa.me/573134746793?text=Hola,%20confirmo%20mi%20asistencia%20a%20tus%2015%20años" target="_blank" class="btn">
-        Confirmar asistencia
-    </a>
+<!-- 5 MENSAJE BIBLICO -->
+<section class="section revista">
+  <p class="biblia gold-text">
+    “Que el Señor te bendiga y te guarde;
+    que el Señor haga resplandecer su rostro sobre ti.”
+  </p>
+</section>
+
+<!-- 6 CONTADOR -->
+<section class="section revista">
+  <h2 class="gold-text">Cuenta Regresiva</h2>
+  <div id="countdown"></div>
+  <div class="calendario">
+    <div>Marzo</div>
+    <div class="dia-evento">28</div>
+  </div>
+</section>
+
+<!-- 7 EUCARISTIA -->
+<section class="section revista">
+  <h2 class="gold-text">Eucaristía</h2>
+  <p>5:00 PM</p>
+  <p>Parroquia del Divino Niño</p>
+  <a href="https://www.google.com/maps/search/?api=1&query=Cl.+98+%2335-36,+Manizales" target="_blank" class="btn-gold">Cómo llegar</a>
+</section>
+
+<!-- 8 COMIDA -->
+<section class="section revista">
+  <h2 class="gold-text">Recepción</h2>
+  <p>7:30 PM</p>
+  <p>Restaurante Casa Grande</p>
+  <a href="https://www.google.com/maps/search/?api=1&query=Restaurante+Casa+Grande+Manizales" target="_blank" class="btn-gold">Ver ubicación</a>
+</section>
+
+<!-- 9 CONFIRMACION -->
+<section class="section revista">
+  <h2 class="gold-text">Confirmar Asistencia</h2>
+  <p>Antes del 18 de Marzo</p>
+  <a href="https://wa.me/573134746793?text=Hola,%20confirmo%20mi%20asistencia%20a%20los%2015%20de%20Isa" target="_blank" class="btn-gold">Confirmar por WhatsApp</a>
 </section>
 
 </div>
 
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="js/script.js"></script>
-
 </body>
 </html>
