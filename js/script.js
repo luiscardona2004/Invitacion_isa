@@ -1,61 +1,110 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function(){
 
-  $("#contenido").hide();
+gsap.registerPlugin(ScrollTrigger);
 
-  $("#enterBtn").click(function(){
-    $("#intro").fadeOut(1500);
-    $("#contenido").fadeIn(1500);
-    document.getElementById("music").play();
+/* Animaciones revista */
+gsap.utils.toArray(".revista").forEach(section=>{
+  gsap.from(section,{
+    opacity:0,
+    y:100,
+    duration:1.5,
+    scrollTrigger:{
+      trigger:section,
+      start:"top 80%"
+    }
+  });
+});
+
+/* Luz cursor */
+document.addEventListener("mousemove",(e)=>{
+  gsap.to(".cursor-luz",{
+    x:e.clientX,
+    y:e.clientY,
+    duration:0.3
+  });
+});
+
+/* Música */
+const audio=document.getElementById("musica");
+$("#btnMusica").click(()=>audio.play());
+
+/* Contador */
+const fecha=new Date("March 28, 2026 17:00:00").getTime();
+
+setInterval(()=>{
+  const ahora=new Date().getTime();
+  const dif=fecha-ahora;
+
+  if(dif <= 0){
+    $("#contador").html("¡Hoy es el gran día!");
+    return;
+  }
+
+  const d=Math.floor(dif/(1000*60*60*24));
+  const h=Math.floor((dif%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((dif%(1000*60*60))/(1000*60));
+  const s=Math.floor((dif%(1000*60))/1000);
+
+  $("#contador").html(`${d}d ${h}h ${m}m ${s}s`);
+},1000);
+
+/* Partículas doradas */
+const canvas=document.getElementById("particulas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+window.addEventListener("resize",()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+let particles=[];
+for(let i=0;i<100;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    size:Math.random()*3,
+    speed:Math.random()*1
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="gold";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.fill();
+    p.y+=p.speed;
+    if(p.y>canvas.height)p.y=0;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* BOTÓN COMENZAR EXPERIENCIA */
+document.getElementById("btnComenzar").addEventListener("click", function(){
+
+  audio.play();
+
+  gsap.to("#intro",{
+    opacity:0,
+    duration:1.5,
+    scale:1.1,
+    ease:"power2.out",
+    onComplete:()=>{
+      document.getElementById("intro").style.display="none";
+
+      gsap.from(".hero",{
+        opacity:0,
+        y:100,
+        duration:1.5
+      });
+    }
   });
 
 });
 
-/* CURSOR LIGHT */
-document.addEventListener("mousemove",(e)=>{
-  document.querySelector(".cursor-light").style.left = e.pageX+"px";
-  document.querySelector(".cursor-light").style.top = e.pageY+"px";
 });
-
-/* HERO 3D */
-document.addEventListener("mousemove",(e)=>{
-  const x = (window.innerWidth/2 - e.pageX)/30;
-  const y = (window.innerHeight/2 - e.pageY)/30;
-  document.querySelector(".hero-3d").style.transform =
-  `rotateY(${x}deg) rotateX(${y}deg)`;
-});
-
-/* SWIPER */
-new Swiper(".mySwiper",{
-  effect:"coverflow",
-  grabCursor:true,
-  centeredSlides:true,
-  slidesPerView:"auto",
-  coverflowEffect:{
-    rotate:30,
-    depth:100,
-    slideShadows:true,
-  },
-});
-
-/* CONTADOR */
-const countdown=document.getElementById("countdown");
-const fechaEvento=new Date("March 28, 2026 17:00:00").getTime();
-
-setInterval(()=>{
-  const ahora=new Date().getTime();
-  const dif=fechaEvento-ahora;
-  const dias=Math.floor(dif/(1000*60*60*24));
-  const horas=Math.floor((dif%(1000*60*60*24))/(1000*60*60));
-  const min=Math.floor((dif%(1000*60*60))/(1000*60));
-  const seg=Math.floor((dif%(1000*60))/1000);
-  countdown.innerHTML=`${dias} días ${horas}h ${min}m ${seg}s`;
-},1000);
-
-/* PETALOS */
-for(let i=0;i<40;i++){
-  let petalo=document.createElement("div");
-  petalo.classList.add("petalo");
-  petalo.style.left=Math.random()*100+"vw";
-  petalo.style.animationDuration=(5+Math.random()*5)+"s";
-  document.body.appendChild(petalo);
-}

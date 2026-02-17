@@ -1,115 +1,266 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-  margin:0;
-  background:#0d0d0d;
+  font-family:'Playfair Display',serif;
+  background:#0b0f1a;
   color:white;
-  font-family:'Montserrat',sans-serif;
   overflow-x:hidden;
 }
 
-/* EFECTO LUZ CURSOR */
-.cursor-light{
+/* Partículas */
+#particulas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* Luz */
+.cursor-luz{
   position:fixed;
   width:300px;
   height:300px;
-  background:radial-gradient(circle, rgba(255,215,0,0.2), transparent 60%);
+  border-radius:50%;
   pointer-events:none;
+  background:radial-gradient(circle,gold 0%, transparent 70%);
+  opacity:0.15;
   transform:translate(-50%,-50%);
-  z-index:1;
 }
 
-/* TEXTO DORADO */
-.gold-text{
-  background:linear-gradient(90deg,#c9a227,#ffd700,#c9a227);
-  -webkit-background-clip:text;
-  color:transparent;
+/* Flores */
+.flores img{
+  position:fixed;
+  width:80px;
+  opacity:0.2;
+  animation:flotar 20s linear infinite;
 }
 
-/* BRILLO */
-.shine{
-  background-size:200% auto;
-  animation:shine 3s linear infinite;
+.flores img:nth-child(1){left:5%;top:10%;}
+.flores img:nth-child(2){right:10%;top:40%;}
+.flores img:nth-child(3){left:50%;bottom:10%;}
+
+@keyframes flotar{
+  0%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-30px) rotate(10deg);}
+  100%{transform:translateY(0) rotate(0deg);}
 }
 
-@keyframes shine{
-  to{background-position:200% center;}
-}
-
-/* SECCIONES */
-.section{
-  padding:120px 20px;
-  text-align:center;
-  transition:1s;
-}
-
-/* HERO */
 .hero{
   height:100vh;
+  background:url('../images/portada.jpg') center/cover no-repeat;
   display:flex;
   justify-content:center;
   align-items:center;
+  text-align:center;
+}
+.titulo-xv{
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  opacity: 1;
+  font-size:0.875rem;
+  line-height: 1.25rem;
+  letter-spacing:0.4em;
+  text-transform:uppercase;
+  color: #6b7280;
+  margin-bottom:30px;
+}
+
+.foto-container{
+  width:260px;
+  height:260px;
+  margin:auto;
+  border-radius:200px;
+  overflow:hidden;
+  border:3px solid rgb(228, 228, 228);
+  box-shadow:0 0 30px rgba(102, 151, 214, 0.616);
+  margin-bottom:30px;
+  
+}
+
+.foto-isa{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1s;
+}
+
+.foto-isa:hover{
+  transform:scale(1.05);
+}
+
+.nombre{
+  font-family:'Great Vibes', cursive;
+  font-size:9rem;
+  font-weight:normal;
+   text-shadow:
+    0 0 10px rgba(255,215,0,0.5),
+    0 0 20px rgba(30,58,138,0.5);
+
+  background: linear-gradient(
+    90deg,
+    #1e3a8a,
+    #2563eb,
+    gold,
+    #d4af37,
+    #1e3a8a
+  );
+
+  background-size:300% auto;
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+
+  animation: brilloMovimiento 6s linear infinite;
+}
+
+@keyframes brilloMovimiento{
+  0%{
+    background-position:0% center;
+  }
+  100%{
+    background-position:300% center;
+  }
+}
+
+
+@media(max-width:768px){
+  .foto-container{
+    width:260px;
+    height:260px;
+  }
+
+  .nombre{
+    font-size:8rem;
+  }
+}
+
+
+.overlay{
+  
+  
+}
+
+.seccion{
+  padding:120px 20px;
+  text-align:center;
   perspective:1000px;
 }
 
-.portada{
-  width:320px;
-  border-radius:20px;
-  box-shadow:0 30px 60px rgba(255,215,0,.3);
+/* Revista */
+.revista{
+  transform:rotateX(10deg);
+  transition:1s;
 }
 
-/* BOTONES */
-.btn-gold{
-  padding:14px 30px;
-  background:linear-gradient(45deg,#c9a227,#ffd700);
+.revista:hover{
+  transform:rotateX(0deg);
+}
+
+/* Carrusel 3D */
+.carrusel3D{
+  width:100%;
+  overflow:hidden;
+  perspective:1200px;
+}
+
+.track{
+  display:flex;
+  gap:20px;
+  transition:1s;
+}
+
+.track img{
+  width:300px;
+  border-radius:20px;
+  transform:rotateY(15deg);
+  transition:0.5s;
+}
+
+.track img:hover{
+  transform:rotateY(0deg) scale(1.1);
+}
+
+/* Botones */
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 25px;
+  border-radius:30px;
+  background:linear-gradient(45deg,gold,#d4af37);
+  color:black;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+}
+
+#contador{
+  font-size:30px;
+  color:gold;
+  margin-top:20px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  
+  .track img{width:220px;}
+}
+
+
+/* INTRO PANTALLA */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#0b0f1a,#111827);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:9999;
+  padding:20px;
+}
+
+.intro-contenido{
+  max-width:600px;
+  animation:fadeIntro 2s ease;
+}
+
+.intro-titulo{
+  font-family:'Great Vibes',cursive;
+  font-size:70px;
+  color:gold;
+  margin-bottom:20px;
+}
+
+.intro-texto{
+  font-size:18px;
+  margin-bottom:30px;
+  line-height:1.6;
+}
+
+#btnComenzar{
+  padding:15px 35px;
   border:none;
   border-radius:40px;
-  color:black;
+  background:linear-gradient(45deg,gold,#d4af37);
+  font-size:16px;
   font-weight:bold;
   cursor:pointer;
-  transition:.4s;
+  transition:0.4s;
 }
 
-.btn-gold:hover{
+#btnComenzar:hover{
   transform:scale(1.1);
   box-shadow:0 0 20px gold;
 }
 
-/* SWIPER */
-.swiper{
-  width:300px;
-  height:400px;
+@keyframes fadeIntro{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
-.swiper-slide img{
-  width:100%;
-  border-radius:20px;
-}
-
-/* PETALOS */
-.petalo{
-  position:absolute;
-  width:10px;
-  height:10px;
-  background:gold;
-  border-radius:50%;
-  opacity:0.6;
-  animation:caer linear infinite;
-}
-
-@keyframes caer{
-  from{transform:translateY(-10vh);}
-  to{transform:translateY(110vh);}
-}
-
-/* CALENDARIO */
-.calendario{
-  margin-top:20px;
-  display:inline-block;
-  padding:20px;
-  border:2px solid gold;
-  border-radius:20px;
-}
-
-.dia-evento{
-  font-size:40px;
-  color:gold;
-}
