@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <div class="petalos-container"></div>
 
     <!-- INTRO EXPERIENCIA -->
     <div id="intro">
@@ -38,26 +39,22 @@
 
     </div>
 
-    <!-- Partículas -->
-    <canvas id="particulas"></canvas>
+
 
     <!-- Luz cursor -->
     <div class="cursor-luz"></div>
 
     <!-- Flores flotando -->
     <div class="flores">
-        <img src="images/flor1.svg">
-        <img src="images/flor2.svg">
-        <img src="images/flor3.svg">
+        <img src="images/mariposa.png">
+        <img src="images/mariposa.png">
+        <img src="images/mariposa.png">
     </div>
 
     <!-- Música -->
     <audio id="musica" loop>
-        <source src="musica//Carlos Rivera - Te Esperaba.flac" type="audio/mp3">
+        <source src="musica//Carlos Rivera " type="audio/mp3">
     </audio>
-
-
-
 
     <!-- PORTADA -->
     <section class="hero">
@@ -78,7 +75,7 @@
 
         <div class="separador-ornamento">
             <svg viewBox="0 0 200 40">
-                <path d="M10 20 Q 50 5, 100 20 T 190 20" stroke="#d4af37" stroke-width="2" fill="none" />
+                <path d="M10 20 Q 50 5, 100 20 T 190 20" stroke="#d4af37" stroke-width="1" fill="none" />
                 <circle cx="100" cy="20" r="3" fill="#d4af37" />
             </svg>
         </div>
@@ -97,30 +94,73 @@
     <div id="contenido">
 
         <section class="seccion revista">
-            <h2>Bienvenidos</h2>
-            <p>Hoy comienza un capítulo mágico en mi vida…</p>
+            <h2 class="bienvenidos">Bienvenidos</h2>
+            <p class="conamor">Con mucho amor...</p>
+            <p class="teinv">Te invitamos a celebrar un momento único e irrepetible. Hemos preparado con todo nuestro
+                cariño cada detalle de esta celebración para compartir juntos la alegría de este día tan especial.</p>
+            <div class="separador-heart">
+
+                <div class="linea izquierda"></div>
+
+                <svg viewBox="0 0 24 24" class="heart-icon">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 
+             16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2
+             A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+
+                <div class="linea derecha"></div>
+
+            </div>
+            <p class="mensaje-descubre">descubre lo que hemos preparado para ti</p>
         </section>
 
         <section class="seccion revista">
-            <h2>Mis 15 Años</h2>
-            <p>Con amor celebramos este día tan especial.</p>
-            <p class="firma">Lina Verónica Aristizábal</p>
+            <p class="bienvenidos">UN MOMENTO ESPECIAL </p>
+            <h2 class="conamor" style="margin: 20px 0;">Mis 15 Años</h2>
+            <p>Después de 15 años de amor, risas y sueños compartidos, ha llegado el momento de celebrar esta nueva
+                etapa. Con todo mi amor, te invito a acompañarnos en este día tan especial.</p>
+
+            <div class="separador-heart">
+
+                <div class="linea izquierda"></div>
+
+                <svg viewBox="0 0 24 24" class="heart-icon">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 
+             16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2
+             A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                </svg>
+
+                <div class="linea derecha"></div>
+
+            </div>
+
+            <P class="mensaje-descubre">Con todo el amor del mundo</P>
+            <p class="conamor" style="margin: 20px 0;">Lina Verónica Aristizábal</p>
+            <div class="marco-foto">
+                <img src="images/lina_isa.jpeg" alt="" style="border-radius: 1rem; height: 18rem;">
+            </div>
         </section>
 
         <section class="seccion revista">
-            <h2>Recuerdos</h2>
-            <div class="carrusel3D">
-                <div class="track">
-                    <img src="images/1.jpg">
-                    <img src="images/2.jpg">
-                    <img src="images/3.jpg">
-                    <img src="images/4.jpg">
-                    <img src="images/5.jpg">
-                    <img src="images/6.jpg">
-                    <img src="images/7.jpg">
-                    <img src="images/8.jpg">
-                    <img src="images/9.jpg">
-                </div>
+             <p class="bienvenidos">RECUERDOS </p>
+            <h2 class="momentos" style="margin: 20px 0;">Momentos Que Atesoramos</h2>
+
+            <div class="carrusel-fade">
+                <img src="images/1.jpeg" class="slide active">
+                <img src="images/2.jpeg" class="slide">
+                <img src="images/3.jpeg" class="slide">
+                <img src="images/4.jpeg" class="slide">
+                <img src="images/5.jpeg" class="slide">
+                <img src="images/6.jpeg" class="slide">
+                <img src="images/7.jpeg" class="slide">
+                <img src="images/8.jpeg" class="slide">
+                <img src="images/9.jpeg" class="slide">
+                <img src="images/10.jpeg" class="slide">
+                <img src="images/11.jpeg" class="slide">
+                <img src="images/12.jpeg" class="slide">
+                <img src="images/13.jpeg" class="slide">
+                <img src="images/14.jpeg" class="slide">
+                <img src="images/15.jpeg" class="slide">
             </div>
         </section>
 
