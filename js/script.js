@@ -27,25 +27,71 @@ document.addEventListener("DOMContentLoaded", function () {
   /* Música */
   const audio = document.getElementById("musica");
 
-  /* Contador */
   const fecha = new Date("March 28, 2026 17:00:00").getTime();
 
-  setInterval(() => {
-    const ahora = new Date().getTime();
-    const dif = fecha - ahora;
+const diasEl = document.getElementById("dias");
+const horasEl = document.getElementById("horas");
+const minutosEl = document.getElementById("minutos");
+const segundosEl = document.getElementById("segundos");
 
-    if (dif <= 0) {
-      document.getElementById("contador").innerHTML = "¡Hoy es el gran día!";
-      return;
-    }
+setInterval(() => {
+  const ahora = new Date().getTime();
+  const dif = fecha - ahora;
 
-    const d = Math.floor(dif / (1000 * 60 * 60 * 24));
-    const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((dif % (1000 * 60)) / 1000);
+  if (dif <= 0) {
+    document.querySelector(".contador-box").innerHTML = 
+      "<h3 style='color:gold;'>¡Hoy es el gran día!</h3>";
+    return;
+  }
 
-    document.getElementById("contador").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
-  }, 1000);
+  const d = Math.floor(dif / (1000 * 60 * 60 * 24));
+  const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((dif % (1000 * 60)) / 1000);
+
+  diasEl.textContent = d;
+  horasEl.textContent = h;
+  minutosEl.textContent = m;
+  segundosEl.textContent = s;
+
+}, 1000);
+
+
+const container1 = document.querySelector(".estrellas-container");
+
+const colores = [
+  "#ffffff",   // blanco
+  "#d4af37",   // dorado
+  "#5da9ff"    // azul brillante
+];
+
+for(let i = 0; i < 80; i++){
+
+  const estrella = document.createElement("div");
+  estrella.classList.add("estrella");
+
+  const size = Math.random() * 3 + 1; // tamaño pequeño
+
+  estrella.style.width = size + "px";
+  estrella.style.height = size + "px";
+  estrella.style.background = colores[Math.floor(Math.random() * colores.length)];
+
+  estrella.style.left = Math.random() * 100 + "vw";
+  estrella.style.top = Math.random() * 100 + "vh";
+
+  const duracion = Math.random() * 5 + 3;
+
+  estrella.style.animationDuration = duracion + "s";
+  estrella.style.animationDelay = Math.random() * 5 + "s";
+
+  // algunas con destello extra
+  if(Math.random() > 0.7){
+    estrella.style.animation += ", destello 2s infinite";
+  }
+
+  container1.appendChild(estrella);
+}
+
 
 
   /* ============================= */
@@ -92,6 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
       petalo.remove();
     }, duration * 1000);
   }
+
+
 
 
   /* BOTÓN COMENZAR EXPERIENCIA */

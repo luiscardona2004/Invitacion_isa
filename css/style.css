@@ -204,7 +204,7 @@ body {
 .bienvenidos{
     font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
   
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.25rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
@@ -215,11 +215,12 @@ body {
   font-family: 'Great Vibes', cursive;
   font-size: 2.25rem;
   font-weight: normal;
+  margin-bottom: 20px;
   color: gold;
   text-shadow: 0 0 10px rgba(212,175,55,0.5);
 }
 .teinv{
-  font-family: 'Playfair Display', serif; /* font-serif */
+  font-family: Georgia, serif; font-style: italic;
   font-size: 1.125rem; /* text-lg */
   line-height: 1.75; /* leading-relaxed */
   color: rgba(255,255,255,0.8); /* text-foreground/80 */
@@ -299,39 +300,328 @@ body {
 /* SECCION 5 CARRICEL FOTOS */
 /* ============================== */
 
-.momentos{
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.25rem;
-  font-weight: normal;
-  color: gold;
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-}
+  .momentos{
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.25rem;
+    font-weight: normal;
+    color: gold;
+    text-shadow: 0 0 10px rgba(212,175,55,0.5);
+  }
 
-.carrusel-fade{
+  .carrusel-fade{
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 3 / 4; /* proporción vertical elegante */
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 2px solid gold;
+    box-shadow: 0 0 25px rgba(212,175,55,0.4);
+  }
+
+  .carrusel-fade img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* llena sin deformar */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+  }
+
+  .carrusel-fade img.active{
+    opacity: 1;
+  }
+
+/* ========================= 
+    SECCION JEREMIAS
+*/
+
+
+.frase-box{
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  aspect-ratio: 3 / 4; /* proporción vertical elegante */
-  margin: 40px auto;
+  max-width: 380px;
+  margin: 60px auto;
+  padding: 40px 40px;
+  border-radius: 25px;
+  text-align: center;
   overflow: hidden;
-  border-radius: 20px;
-  border: 2px solid gold;
-  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+
+  /* GLASS EFFECT */
+  background: rgba(15, 28, 46, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 40px rgba(10,25,47,0.6) inset;
 }
 
-.carrusel-fade img{
+/* BORDE DORADO ANIMADO */
+.frase-box::before{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 28px;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    #d4af37,
+    #f9e27d,
+    #d4af37,
+    #b8860b,
+    #d4af37
+  );
+  background-size: 300% 300%;
+  animation: bordeBrillo 7s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes bordeBrillo{
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Comillas */
+.comilla{
+  position: absolute;
+  font-size: 75px;
+  color: rgba(10, 172, 212, 0.301);
+  font-family: serif;
+  line-height: 1;
+}
+
+.comilla.arriba{
+  top: 10px;
+  left: 20px;
+}
+
+.comilla.abajo{
+  bottom: 10px;
+  right: 20px;
+}
+
+/* Texto */
+.frase{
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  line-height: 1.8;
+  font-style: italic;
+  color: #e6edf7;
+  position: relative;
+  z-index: 2;
+}
+
+/* Línea decorativa */
+.decoracion{
+  width: 150px;
+  margin: 30px auto;
+  display: block;
+  color: #d4af37;
+  opacity: 0.8;
+  position: relative;
+  z-index: 2;
+}
+
+/* Referencia */
+.referencia{
+  font-family: "Georgia", serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: #f5d76e;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+/* ============================== */
+/* SECCION 6 CONTADOR  */
+/* ============================== */
+
+.titulo-faltan{
+  font-family: 'Great Vibes', cursive;
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+
+  /* DEGRADADO AZUL + DORADO */
+  background: linear-gradient(90deg, #1e3a8a, #d4af37, #1e3a8a);
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 10px rgba(212,175,55,0.5),
+    0 0 20px rgba(30,58,138,0.4);
+
+  animation: brilloTitulo 6s linear infinite;
+  position: relative;
+}
+
+/* Animación brillo desplazándose */
+@keyframes brilloTitulo{
+  0%{ background-position: 0% center; }
+  100%{ background-position: 200% center; }
+}
+
+/* Línea decorativa elegante debajo */
+.titulo-faltan::after{
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  margin: 15px auto 0;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  animation: lineaGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes lineaGlow{
+  from{ opacity: 0.5; }
+  to{ opacity: 1; }
+}
+
+
+/* CONTENEDOR GENERAL */
+.contador-box{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+/* TARJETAS DE TIEMPO */
+.tiempo{
+  position: relative;
+  min-width: 120px;
+  padding: 30px 25px;
+  border-radius: 20px;
+  text-align: center;
+  overflow: hidden;
+
+  /* GLASS AZUL */
+  background: rgba(15, 28, 46, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.4),
+    0 0 30px rgba(10,25,47,0.6) inset;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* BORDE DORADO SUTIL */
+/* CONTENEDOR GENERAL */
+.contador-box{
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+/* TARJETAS */
+.tiempo{
+  position: relative;
+  min-width: 130px;
+  padding: 35px 30px;
+  border-radius: 22px;
+  text-align: center;
+  overflow: hidden;
+
+  /* GLASS AZUL PROFUNDO */
+  background: rgba(12, 24, 45, 0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.5),
+    inset 0 0 50px rgba(10,25,47,0.6);
+
+  transition: all 0.4s ease;
+}
+
+/* BORDE DORADO ELEGANTE */
+.tiempo::before{
+  content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* llena sin deformar */
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  border-radius: 22px;
+  padding: 2px;
+  background: linear-gradient(135deg, #d4af37, #f9e27d, #b8860b, #d4af37);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
-.carrusel-fade img.active{
-  opacity: 1;
+/* EFECTO HOVER */
+.tiempo:hover{
+  transform: translateY(-10px) scale(1.06);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.7),
+    0 0 30px rgba(212,175,55,0.3);
 }
+
+/* NÚMEROS */
+.tiempo span{
+  font-size: 48px;
+  font-weight: 700;
+  color: #f5d76e;
+  display: block;
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 0 8px rgba(212,175,55,0.8),
+    0 0 18px rgba(212,175,55,0.5);
+
+  animation: brilloNumero 3s ease-in-out infinite alternate;
+}
+
+/* Animación suave tipo respiración */
+@keyframes brilloNumero{
+  from{
+    text-shadow:
+      0 0 5px rgba(212,175,55,0.5),
+      0 0 10px rgba(212,175,55,0.3);
+  }
+  to{
+    text-shadow:
+      0 0 15px rgba(212,175,55,0.9),
+      0 0 30px rgba(212,175,55,0.6);
+  }
+}
+
+/* TEXTO INFERIOR */
+.tiempo p{
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #8fa7cc;
+}
+
 
 
 /* Botones */
@@ -487,11 +777,11 @@ body {
 /* ============================== */
 
 .petalos-container{
-  position: fixed;
+    position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 5;
+  z-index: 0; /* más bajo */
 }
 
 .petal{
@@ -512,4 +802,38 @@ body {
   100%{
     transform: translateY(110vh) translateX(-20px) rotate(360deg);
   }
+}
+
+/* =======================
+  ESTRELLAS
+*/
+
+.estrellas-container{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ESTRELLAS */
+.estrella{
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: parpadear infinite ease-in-out;
+}
+
+/* Animación prender y apagar */
+@keyframes parpadear{
+  0%{ opacity: 0; transform: scale(0.5); }
+  50%{ opacity: 1; transform: scale(1); }
+  100%{ opacity: 0; transform: scale(0.5); }
+}
+
+/* Destello ocasional */
+@keyframes destello{
+  0%{ box-shadow: 0 0 0px rgba(255,255,255,0); }
+  50%{ box-shadow: 0 0 8px rgba(255,255,255,0.8); }
+  100%{ box-shadow: 0 0 0px rgba(255,255,255,0); }
 }
