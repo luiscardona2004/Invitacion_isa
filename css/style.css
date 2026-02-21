@@ -309,16 +309,57 @@ body {
   }
 
   .carrusel-fade{
-    position: relative;
-    width: 100%;
-    max-width: 350px;
-    aspect-ratio: 3 / 4; /* proporción vertical elegante */
-    margin: 40px auto;
-    overflow: hidden;
-    border-radius: 20px;
-    border: 2px solid gold;
-    box-shadow: 0 0 25px rgba(212,175,55,0.4);
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 3 / 4;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 20px;
+
+  /* quitamos border normal */
+  border: none;
+
+  background: rgba(15, 25, 45, 0.4);
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 30px rgba(0, 40, 120, 0.4),
+    0 0 30px rgba(212,175,55,0.3);
+}
+
+/* BORDE PREMIUM ANIMADO */
+.carrusel-fade::before{
+  content: "";
+  position: absolute;
+  inset: -2px; /* grosor del borde */
+  border-radius: 22px;
+
+  background: linear-gradient(
+    120deg,
+    #0a1f44,
+    #1e3a8a,
+    #d4af37,
+    #f9e27d,
+    #1e3a8a,
+    #0a1f44
+  );
+
+  background-size: 300% 300%;
+  animation: bordeAnimado 6s linear infinite;
+
+  z-index: -1;
+}
+
+/* animación elegante */
+@keyframes bordeAnimado{
+  0%{
+    background-position: 0% 50%;
   }
+  100%{
+    background-position: 300% 50%;
+  }
+}
 
   .carrusel-fade img{
     position: absolute;
@@ -623,6 +664,285 @@ body {
 }
 
 
+/* ==========================
+  SECCION 7 EUCARISTIA
+============================*/
+
+/* ===== TITULO ===== */
+.titulo-evento{
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+
+  background: linear-gradient(90deg, #d4af37, #f9e27d, #b8860b);
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 10px rgba(212,175,55,0.6),
+    0 0 20px rgba(0,0,0,0.6);
+
+  animation: brilloTitulo 6s linear infinite;
+  position: relative;
+}
+
+.titulo-evento::after{
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* ===== HORA ===== */
+.hora-evento{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f9e27d;
+  letter-spacing: 2px;
+  margin-top: 20px;
+
+  text-shadow: 0 0 8px rgba(212,175,55,0.5);
+}
+
+/* ===== LUGAR ===== */
+.lugar-evento{
+  font-size: 1rem;
+  color: #dbe6ff;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-weight: 300;
+
+  text-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
+
+/* ===== ANIMACION ===== */
+@keyframes brilloTitulo{
+  0%{ background-position: 0% center; }
+  100%{ background-position: 200% center; }
+}
+
+/* ==========================
+  SECCION 7 RECEPION
+============================*/
+
+/* ===== TITULO RECEPCIÓN ===== */
+/* SECCIÓN CENTRADA */
+.bloque-ceremonia{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* CONTENIDO */
+.contenido-ceremonia{
+  max-width: 420px;
+}
+
+/* ICONO */
+.icono-iglesia{
+  font-size: 42px;
+  color: #d4af37;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px rgba(212,175,55,0.6);
+}
+
+/* SUBTITULO */
+.subtitulo-ceremonia{
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #d4af37;
+  margin-bottom: 20px;
+}
+
+/* TITULO */
+.titulo-ceremonia{
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+
+  background: linear-gradient(90deg, #d4af37, #f9e27d, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TARJETA */
+.tarjeta-ceremonia{
+  padding: 35px;
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  background: rgba(20, 30, 50, 0.5);
+
+  border: 1px solid rgba(212,175,55,0.4);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    inset 0 0 30px rgba(212,175,55,0.1);
+
+  margin-bottom: 40px;
+}
+
+/* HORA */
+.hora-ceremonia{
+  font-size: 1.8rem;
+  color: #f9e27d;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* SEPARADOR */
+.separador{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: rgba(212,175,55,0.6);
+  margin: 25px 0;
+}
+
+.separador span{
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, #d4af37);
+}
+
+/* LUGAR */
+.lugar-ceremonia{
+  font-size: 1.1rem;
+  color: #e6ecff;
+}
+
+/* BOTON */
+.boton-ceremonia{
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 15px;
+
+  background: linear-gradient(135deg, #d4af37, #f9e27d, #b8860b);
+  color: #0b1628;
+
+  box-shadow:
+    0 0 20px rgba(212,175,55,0.6);
+
+  transition: 0.4s ease;
+}
+
+.boton-ceremonia:hover{
+  transform: scale(1.05);
+  box-shadow:
+    0 0 35px rgba(212,175,55,0.9);
+}
+
+/* =============================
+  RECEPCION - ASISTENCIA
+  =============================== */
+
+/* CONTENEDOR GENERAL */
+.bloque-evento{
+  text-align: center;
+  padding: 80px 20px;
+}
+
+/* TITULO */
+.titulo-evento{
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+
+  background: linear-gradient(90deg, #d4af37, #f9e27d, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* TARJETA */
+.tarjeta-evento{
+  max-width: 400px;
+  margin: 0 auto 35px;
+  padding: 35px;
+  border-radius: 25px;
+
+  background: rgba(20, 30, 50, 0.55);
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(212,175,55,0.4);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.6),
+    inset 0 0 30px rgba(212,175,55,0.1);
+}
+
+/* HORA */
+.hora-evento{
+  font-size: 1.7rem;
+  color: #f9e27d;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* LUGAR */
+.lugar-evento{
+  font-size: 1.1rem;
+  color: #e6ecff;
+  margin-bottom: 6px;
+}
+
+/* DIRECCION */
+.direccion-evento{
+  font-size: 0.95rem;
+  color: #a9c3ff;
+}
+
+/* FECHA RSVP */
+.fecha-evento{
+  font-size: 1.2rem;
+  color: #f9e27d;
+  font-weight: 500;
+}
+
+/* BOTON */
+.boton-evento{
+  display: inline-block;
+  padding: 14px 30px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 15px;
+
+  background: linear-gradient(135deg, #d4af37, #f9e27d, #b8860b);
+  color: #0b1628;
+
+  box-shadow: 0 0 20px rgba(212,175,55,0.6);
+  transition: 0.4s ease;
+}
+
+.boton-evento:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(212,175,55,0.9);
+}
+
+/* BOTON WHATSAPP VARIANTE */
+.whatsapp{
+  background: linear-gradient(135deg, #d4af37, #f9e27d, #b8860b);
+}
+
+
+  /* =====================0 */
+
 
 /* Botones */
 .btn {
@@ -656,64 +976,161 @@ body {
 }
 
 
-/* INTRO PANTALLA */
-#intro {
+/* ============================= */
+/* FONDO CON MOVIMIENTO DE LUZ */
+/* ============================= */
+
+#intro{
   position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(135deg, #0b0f1a, #111827);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  inset: 0;
   z-index: 9999;
-  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+
+  background: linear-gradient(160deg, #060a18, #0b1530, #050810);
+  overflow: hidden;
 }
 
-.intro-contenido {
-  max-width: 600px;
-  animation: fadeIntro 2s ease;
+/* Luz azul en movimiento */
+#intro::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background: radial-gradient(circle, rgba(30,58,138,0.4), transparent 70%);
+  top:-200px;
+  left:-200px;
+  animation: moverLuz 12s ease-in-out infinite alternate;
+  filter: blur(60px);
 }
 
-.intro-titulo {
+/* Luz dorada en movimiento */
+#intro::after{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background: radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+  bottom:-200px;
+  right:-150px;
+  animation: moverLuz 14s ease-in-out infinite alternate-reverse;
+  filter: blur(60px);
+}
+
+@keyframes moverLuz{
+  0%{ transform: translate(0,0); }
+  100%{ transform: translate(80px,60px); }
+}
+
+/* ============================= */
+/* CAJA CENTRAL ELEGANTE */
+/* ============================= */
+
+.intro-contenido{
+  position: relative;
+  max-width: 540px;
+  padding: 80px 60px;
+  border-radius: 36px;
+  background: rgba(12,18,35,0.78);
+  backdrop-filter: blur(20px);
+  z-index: 2;
+
+  box-shadow:
+    0 50px 100px rgba(0,0,0,0.9),
+    0 0 60px rgba(30,58,138,0.4);
+}
+
+/* Marco decorativo fino */
+.intro-contenido::before{
+  content:"";
+  position:absolute;
+  inset:12px;
+  border-radius:28px;
+  border:1px solid rgba(212,175,55,0.5);
+  pointer-events:none;
+}
+
+/* Borde exterior luminoso */
+.intro-contenido::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:38px;
+  background: linear-gradient(
+    135deg,
+    rgba(212,175,55,0.8),
+    rgba(30,58,138,0.6),
+    rgba(212,175,55,0.8)
+  );
+  z-index:-1;
+  filter: blur(10px);
+  opacity:0.6;
+}
+
+/* ============================= */
+/* TITULO */
+/* ============================= */
+
+.intro-titulo{
   font-family: 'Great Vibes', cursive;
-  font-size: 70px;
-  color: gold;
-  margin-bottom: 20px;
-}
-
-.intro-texto {
-  font-size: 18px;
+  font-size: 3.4rem;
   margin-bottom: 30px;
-  line-height: 1.6;
+
+  background: linear-gradient(90deg,#f9e27d,#ffffff,#d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 0 35px rgba(212,175,55,0.6);
 }
 
-#btnComenzar {
-  padding: 15px 35px;
+/* ============================= */
+/* TEXTO */
+/* ============================= */
+
+.intro-texto{
+  color: #eef3ff;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  margin-bottom: 50px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+}
+
+/* ============================= */
+/* BOTON GALA LUMINOSO */
+/* ============================= */
+
+#btnComenzar{
+  padding: 16px 45px;
+  border-radius: 50px;
   border: none;
-  border-radius: 40px;
-  background: linear-gradient(45deg, gold, #d4af37);
-  font-size: 16px;
-  font-weight: bold;
   cursor: pointer;
-  transition: 0.4s;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  background: linear-gradient(135deg,#d4af37,#f9e27d);
+  color: #0a1224;
+
+  box-shadow:
+    0 0 25px rgba(212,175,55,0.6),
+    0 15px 40px rgba(0,0,0,0.8);
+
+  transition: all 0.4s ease;
 }
 
-#btnComenzar:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgb(236, 201, 1);
-}
-
-@keyframes fadeIntro {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#btnComenzar:hover{
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 0 45px rgba(212,175,55,0.9),
+    0 20px 60px rgba(0,0,0,1);
 }
 
 /* ============================== */

@@ -151,7 +151,7 @@ for(let i = 0; i < 80; i++){
 
     gsap.to("#intro", {
       opacity: 0,
-      duration: 1.5,
+      duration: 5,
       scale: 1.1,
       ease: "power2.out",
       onComplete: () => {
@@ -160,7 +160,7 @@ for(let i = 0; i < 80; i++){
         gsap.from(".hero", {
           opacity: 0,
           y: 100,
-          duration: 1.5
+          duration: 0
         });
       }
     });
