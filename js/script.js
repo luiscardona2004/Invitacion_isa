@@ -1,4 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -10,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       duration: 1.5,
       scrollTrigger: {
         trigger: section,
-        start: "top 80%"
+        start: "top 75%"
       }
     });
   });
@@ -29,68 +31,68 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const fecha = new Date("March 28, 2026 17:00:00").getTime();
 
-const diasEl = document.getElementById("dias");
-const horasEl = document.getElementById("horas");
-const minutosEl = document.getElementById("minutos");
-const segundosEl = document.getElementById("segundos");
+  const diasEl = document.getElementById("dias");
+  const horasEl = document.getElementById("horas");
+  const minutosEl = document.getElementById("minutos");
+  const segundosEl = document.getElementById("segundos");
 
-setInterval(() => {
-  const ahora = new Date().getTime();
-  const dif = fecha - ahora;
+  setInterval(() => {
+    const ahora = new Date().getTime();
+    const dif = fecha - ahora;
 
-  if (dif <= 0) {
-    document.querySelector(".contador-box").innerHTML = 
-      "<h3 style='color:gold;'>¡Hoy es el gran día!</h3>";
-    return;
+    if (dif <= 0) {
+      document.querySelector(".contador-box").innerHTML =
+        "<h3 style='color:gold;'>¡Hoy es el gran día!</h3>";
+      return;
+    }
+
+    const d = Math.floor(dif / (1000 * 60 * 60 * 24));
+    const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((dif % (1000 * 60)) / 1000);
+
+    diasEl.textContent = d;
+    horasEl.textContent = h;
+    minutosEl.textContent = m;
+    segundosEl.textContent = s;
+
+  }, 1000);
+
+
+  const container1 = document.querySelector(".estrellas-container");
+
+  const colores = [
+    "#ffffff",   // blanco
+    "#d4af37",   // dorado
+    "#5da9ff"    // azul brillante
+  ];
+
+  for (let i = 0; i < 80; i++) {
+
+    const estrella = document.createElement("div");
+    estrella.classList.add("estrella");
+
+    const size = Math.random() * 3 + 1; // tamaño pequeño
+
+    estrella.style.width = size + "px";
+    estrella.style.height = size + "px";
+    estrella.style.background = colores[Math.floor(Math.random() * colores.length)];
+
+    estrella.style.left = Math.random() * 100 + "vw";
+    estrella.style.top = Math.random() * 100 + "vh";
+
+    const duracion = Math.random() * 5 + 3;
+
+    estrella.style.animationDuration = duracion + "s";
+    estrella.style.animationDelay = Math.random() * 5 + "s";
+
+    // algunas con destello extra
+    if (Math.random() > 0.7) {
+      estrella.style.animation += ", destello 2s infinite";
+    }
+
+    container1.appendChild(estrella);
   }
-
-  const d = Math.floor(dif / (1000 * 60 * 60 * 24));
-  const h = Math.floor((dif % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const m = Math.floor((dif % (1000 * 60 * 60)) / (1000 * 60));
-  const s = Math.floor((dif % (1000 * 60)) / 1000);
-
-  diasEl.textContent = d;
-  horasEl.textContent = h;
-  minutosEl.textContent = m;
-  segundosEl.textContent = s;
-
-}, 1000);
-
-
-const container1 = document.querySelector(".estrellas-container");
-
-const colores = [
-  "#ffffff",   // blanco
-  "#d4af37",   // dorado
-  "#5da9ff"    // azul brillante
-];
-
-for(let i = 0; i < 80; i++){
-
-  const estrella = document.createElement("div");
-  estrella.classList.add("estrella");
-
-  const size = Math.random() * 3 + 1; // tamaño pequeño
-
-  estrella.style.width = size + "px";
-  estrella.style.height = size + "px";
-  estrella.style.background = colores[Math.floor(Math.random() * colores.length)];
-
-  estrella.style.left = Math.random() * 100 + "vw";
-  estrella.style.top = Math.random() * 100 + "vh";
-
-  const duracion = Math.random() * 5 + 3;
-
-  estrella.style.animationDuration = duracion + "s";
-  estrella.style.animationDelay = Math.random() * 5 + "s";
-
-  // algunas con destello extra
-  if(Math.random() > 0.7){
-    estrella.style.animation += ", destello 2s infinite";
-  }
-
-  container1.appendChild(estrella);
-}
 
 
 
@@ -168,21 +170,71 @@ for(let i = 0; i < 80; i++){
   });
 
   /* CARRUSEL FADE AUTOMÁTICO */
-  const slides = document.querySelectorAll(".carrusel-fade .slide");
-  let index = 0;
+  /* CARRUSEL CONTROLADO POR SCROLL */
 
-  function cambiarSlide() {
-    slides[index].classList.remove("active");
+const slides = document.querySelectorAll(".carrusel-fade img");
 
-    index++;
-    if (index >= slides.length) {
-      index = 0;
-    }
+let index = 0;
+let intervalo = null;
 
-    slides[index].classList.add("active");
+function cambiarSlide() {
+  slides[index].classList.remove("active");
+
+  index++;
+  if (index >= slides.length) {
+    index = 0;
   }
 
-  setInterval(cambiarSlide, 4000); // cambia cada 4 segundos
+  slides[index].classList.add("active");
+}
+
+function iniciarCarrusel() {
+  if (!intervalo) {
+    intervalo = setInterval(cambiarSlide, 3000);
+  }
+}
+
+function detenerCarrusel() {
+  clearInterval(intervalo);
+  intervalo = null;
+
+  slides[index].classList.remove("active");
+  index = 0;
+  slides[index].classList.add("active");
+}
+
+ScrollTrigger.create({
+  trigger: ".carrusel-fade",
+  start: "top 70%",
+  onEnter: () => {
+    iniciarCarrusel();
+  },
+  onLeaveBack: () => {
+    detenerCarrusel();
+  }
+});
+
+const modal = document.getElementById("modalConfirmacion");
+const btnAbrir = document.getElementById("abrirModal");
+const cerrar = document.querySelector(".cerrar-modal");
+
+btnAbrir.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+cerrar.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+
+
+
 
 
 });
